@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Сервис для AGIMA Partners’ Club — Портфолио UI/UX</title>
+    <meta name="description" content="Детальная страница проекта: сервис для AGIMA Partners’ Club." />
+    <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
+    <link rel="apple-touch-icon" href="../assets/me.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="container topbar-inner">
+        <a class="brand" href="../index.html" aria-label="На главную">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span>UI/UX Portfolio</span>
+        </a>
+        <nav class="nav" aria-label="Навигация">
+          <a href="../index.html#projects">К проектам</a>
+          <a class="nav-resume" href="../assets/resume.pdf" download>
+            <span class="resume-full">Скачать резюме</span>
+            <span class="resume-short">Резюме</span>
+          </a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <div class="container">
+        <div class="breadcrumbs" aria-label="Хлебные крошки">
+          <a href="../index.html">Главная</a>
+          <span>•</span>
+          <span>Проект 1</span>
+        </div>
+
+        <section class="detail-hero" aria-label="Вступление проекта">
+          <div class="detail-grid">
+            <div class="detail-card">
+              <h1 class="detail-title">Сервис для AGIMA Partners’ Club</h1>
+              <div class="detail-meta">UI/UX • Исследование сценариев • Прототипирование • UI kit</div>
+
+              <div class="tag-row" aria-label="Теги">
+                <span class="tag">Сценарии</span>
+                <span class="tag">Навигация</span>
+                <span class="tag">Типографика</span>
+              </div>
+
+              <p class="about-text detail-intro-text">
+                Цель проекта — упростить ключевые действия в приложении: от входа до выполнения задачи.
+                Я собрала путь пользователя, выделила “узкие места” и затем спроектировала интерфейс так,
+                чтобы каждый шаг был очевиден.
+              </p>
+
+              <div class="btn-row">
+                <a class="btn btn-primary" href="../index.html#projects">Назад к проектам</a>
+              </div>
+            </div>
+
+            <div class="hero-media" aria-label="Главное изображение проекта">
+              <!-- Заменить на свою hero-картинку -->
+              <img src="../assets/project-1-hero.png" alt="Hero: мобильное приложение" />
+            </div>
+          </div>
+        </section>
+
+        <section class="content-section" aria-label="Описание проекта">
+          <!-- Pair 1 -->
+          <div class="pair">
+            <div class="pair-media">
+              <img src="../assets/project-1-screen-1.png" alt="Скрин 1" />
+            </div>
+            <div class="pair-body">
+              <h3>Проблема и решение</h3>
+              <p class="lead">
+                На первом прототипе пользователи путались на этапе выбора сценария. Я разделила поток на
+                понятные ветки и сделала подсказки более “человеческими”.
+              </p>
+              <p>
+                В результате структура стала короче по шагам, а интерфейс — спокойнее: меньше конкурирующих
+                элементов, больше акцента на действии.
+              </p>
+            </div>
+          </div>
+
+          <!-- Pair 2 (reverse) -->
+          <div class="pair reverse">
+            <div class="pair-media">
+              <img src="../assets/project-1-screen-2.png" alt="Скрин 2" />
+            </div>
+            <div class="pair-body">
+              <h3>UI kit и система</h3>
+              <p class="lead">
+                Собрала компоненты под масштабирование: кнопки, формы, карточки и навигация.
+              </p>
+              <p>
+                Типографика придерживается одной логики размеров и межстрочного интервала, а цветовые акценты
+                помогают быстро “сканировать” экран.
+              </p>
+            </div>
+          </div>
+
+          <!-- Spoiler -->
+          <div class="spoiler-wrap">
+            <details>
+              <summary>Спойлер: что я бы улучшила дальше</summary>
+              <div class="spoiler-content">
+                Дальше я хочу протестировать альтернативные формулировки CTA и уточнить поведение пустых
+                состояний. Также планирую добавить микро-анимации для большей “отзывчивости” интерфейса.
+              </div>
+            </details>
+          </div>
+
+          <!-- Pair 3 -->
+          <div class="pair">
+            <div class="pair-media">
+              <img src="../assets/project-1-mockup.png" alt="Макет" />
+            </div>
+            <div class="pair-body">
+              <h3>Итог</h3>
+              <p>
+                Интерфейс стал более последовательным и предсказуемым: пользователям легче понять, что делать
+                дальше, и проще ориентироваться в сценариях.
+              </p>
+              <p class="muted detail-note">
+                (Заменишь этот текст на свои выводы — можно короче или наоборот более подробно.)
+              </p>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="container">
+      <div class="footer-row">
+        <div class="muted">© <span id="year"></span> Имя Фамилия</div>
+        <a class="muted" href="../index.html">На главную</a>
+      </div>
+    </footer>
+
+    <script src="../project-page.js" defer></script>
+  </body>
+</html>
