@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vlad Ermakov — home</title>
+    <meta name="description" content="UI/UX портфолио: о себе и проекты с детальными страницами." />
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+    <link rel="apple-touch-icon" href="assets/me.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="page-home">
+    <main id="top">
+      <section class="desktop-scene" aria-label="Рабочий стол">
+        <video id="desktop-video" class="desktop-video is-active" autoplay muted playsinline preload="auto" aria-hidden="true">
+          <source src="assets/desktop-bg.mp4" type="video/mp4" />
+        </video>
+        <video class="desktop-video" muted playsinline preload="auto" aria-hidden="true">
+          <source src="assets/desktop-bg.mp4" type="video/mp4" />
+        </video>
+
+        <div class="desktop-menubar" aria-hidden="true">
+          <div class="menubar-center">
+            <span class="menubar-title">Москва</span>
+            <span class="menubar-separator">•</span>
+            <span id="moscow-weekday" class="menubar-weekday">---</span>
+            <span id="moscow-time">--:--</span>
+          </div>
+          <div class="menubar-right">
+            <i id="work-status-icon" class="fa-solid fa-briefcase menubar-status-icon" aria-hidden="true"></i>
+            <span id="work-status" class="menubar-status">--</span>
+          </div>
+        </div>
+
+        <div class="desktop-overlay"></div>
+
+        <div class="desktop-icons" id="desktop-icons">
+          <div
+            class="desktop-item profile-folder"
+            data-draggable="true"
+            aria-label="Виджет Влад Ермаков"
+          >
+            <span class="desktop-icon photo-icon">
+              <img src="assets/me.png" alt="Влад Ермаков" />
+            </span>
+            <span class="profile-text">
+              <span class="desktop-label">Влад Ермаков</span>
+              <span class="profile-role">UI/UX дизайнер</span>
+            </span>
+          </div>
+
+          <div
+            class="desktop-item profile-social-plate-widget"
+            data-draggable="true"
+            aria-label="Социальные ссылки"
+          >
+            <span class="profile-socials">
+              <a
+                class="profile-social-link"
+                href="https://vk.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                data-no-drag="true"
+                aria-label="VK"
+                ><i class="fa-brands fa-vk" aria-hidden="true"></i
+              ></a>
+              <a
+                class="profile-social-link"
+                href="https://www.linkedin.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                data-no-drag="true"
+                aria-label="LinkedIn"
+                ><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i
+              ></a>
+              <a
+                class="profile-social-link"
+                href="https://t.me/"
+                target="_blank"
+                rel="noopener noreferrer"
+                data-no-drag="true"
+                aria-label="Telegram"
+                ><i class="fa-brands fa-telegram" aria-hidden="true"></i
+              ></a>
+              <a
+                class="profile-social-link"
+                href="mailto:hello@example.com"
+                data-no-drag="true"
+                aria-label="Почта"
+                ><i class="fa-solid fa-envelope" aria-hidden="true"></i
+              ></a>
+            </span>
+          </div>
+
+          <button
+            class="desktop-item desktop-folder-projects"
+            type="button"
+            data-draggable="true"
+            data-open-window="projects-window"
+            aria-label="Открыть проекты"
+          >
+            <span class="desktop-icon social-icon folder"><i class="fa-solid fa-folder" aria-hidden="true"></i></span>
+            <span class="desktop-label">Проекты</span>
+          </button>
+
+          <a
+            class="desktop-item desktop-app-figma"
+            href="https://www.figma.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-draggable="true"
+            aria-label="Figma"
+          >
+            <span class="desktop-icon social-icon figma">
+              <img
+                class="app-glyph figma-glyph"
+                src="assets/figma-logo.svg"
+                alt=""
+                aria-hidden="true"
+              />
+            </span>
+            <span class="desktop-label">Figma</span>
+          </a>
+        </div>
+
+        <section id="projects" class="desktop-window-zone" aria-label="Мои проекты">
+          <div class="desktop-window-head">
+            <span class="window-pill"><i class="fa-solid fa-folder" aria-hidden="true"></i>Проекты</span>
+            <button class="window-close" type="button" aria-label="Закрыть окно проектов">×</button>
+          </div>
+
+          <div class="desktop-window" id="projects-window">
+            <div class="desktop-window-body">
+              <div class="projects-grid window-projects-grid">
+                <a class="project-card" href="projects/project-1.html">
+                  <div class="project-thumb">
+                    <img src="assets/project-1-thumb.png" alt="Превью проекта 1" />
+                  </div>
+                  <div class="project-body">
+                    <h3 class="project-title">Сервис для AGIMA Partners’ Club</h3>
+                    <p class="project-desc">
+                      Интерфейс с фокусом на сценарии пользователя, простую навигацию и аккуратную визуальную систему.
+                    </p>
+                  </div>
+                </a>
+
+                <a class="project-card" href="projects/project-2.html">
+                  <div class="project-thumb">
+                    <img src="assets/project-2-thumb.png" alt="Превью проекта 2" />
+                  </div>
+                  <div class="project-body">
+                    <h3 class="project-title">Сайт для ресторана «Роща»</h3>
+                    <p class="project-desc">
+                      Переосмысление структуры страниц, улучшение читаемости и новый UI kit для масштабирования.
+                    </p>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <div class="desktop-hint">Перетаскивай как на рабочем столе</div>
+      </section>
+    </main>
+
+    <script src="app.js" defer></script>
+  </body>
+</html>
