@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 144" role="img" aria-labelledby="title">
+  <title>Figma</title>
+  <rect x="0" y="0" width="48" height="48" rx="24" fill="#F24E1E"/>
+  <rect x="48" y="0" width="48" height="48" rx="24" fill="#FF7262"/>
+  <rect x="0" y="48" width="48" height="48" rx="24" fill="#A259FF"/>
+  <circle cx="72" cy="72" r="24" fill="#1ABCFE"/>
+  <rect x="0" y="96" width="48" height="48" rx="24" fill="#0ACF83"/>
+</svg>
