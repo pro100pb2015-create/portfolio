@@ -92,13 +92,33 @@
     const markVideoReady = () => {
       desktopScene.classList.add("video-ready");
     };
+    const isMobileViewport = window.matchMedia("(max-width: 920px)").matches;
     const [firstVideo] = desktopVideos;
+
+    // Safety net: show active layer even if browser does not emit canplay/loadeddata reliably.
+    window.setTimeout(markVideoReady, 1200);
 
     if (desktopVideos.length < 2) {
       firstVideo.loop = true;
       safePlay(firstVideo);
       firstVideo.addEventListener("loadeddata", markVideoReady, { once: true });
       firstVideo.addEventListener("canplay", markVideoReady, { once: true });
+      firstVideo.addEventListener("error", markVideoReady, { once: true });
+      if (firstVideo.readyState >= 2) markVideoReady();
+      return;
+    }
+
+    if (isMobileViewport) {
+      desktopVideos.forEach((video, index) => {
+        video.loop = index === 0;
+      });
+      desktopVideos.forEach((video, index) => {
+        video.classList.toggle("is-active", index === 0);
+      });
+      safePlay(firstVideo);
+      firstVideo.addEventListener("loadeddata", markVideoReady, { once: true });
+      firstVideo.addEventListener("canplay", markVideoReady, { once: true });
+      firstVideo.addEventListener("error", markVideoReady, { once: true });
       if (firstVideo.readyState >= 2) markVideoReady();
       return;
     }
@@ -161,6 +181,7 @@
     safePlay(activeVideo);
     firstVideo.addEventListener("loadeddata", markVideoReady, { once: true });
     firstVideo.addEventListener("canplay", markVideoReady, { once: true });
+    firstVideo.addEventListener("error", markVideoReady, { once: true });
     if (firstVideo.readyState >= 2) markVideoReady();
   }
 
