@@ -89,21 +89,33 @@
   function initVideoBackground() {
     if (!desktopVideos.length || !desktopScene) return;
 
+    let isVideoReadyMarked = false;
     const markVideoReady = () => {
+      if (isVideoReadyMarked) return;
+      isVideoReadyMarked = true;
       desktopScene.classList.add("video-ready");
     };
     const isMobileViewport = window.matchMedia("(max-width: 920px)").matches;
     const [firstVideo] = desktopVideos;
 
-    // Safety net: show active layer even if browser does not emit canplay/loadeddata reliably.
-    window.setTimeout(markVideoReady, 1200);
+    const markWhenFrameActuallyStarts = (video) => {
+      const onTimeUpdate = () => {
+        if (video.currentTime > 0.01) {
+          video.removeEventListener("timeupdate", onTimeUpdate);
+          markVideoReady();
+        }
+      };
+      video.addEventListener("playing", markVideoReady, { once: true });
+      video.addEventListener("timeupdate", onTimeUpdate);
+    };
+
+    // Last-resort fallback if browser does not dispatch media readiness events.
+    window.setTimeout(markVideoReady, 3500);
 
     if (desktopVideos.length < 2) {
       firstVideo.loop = true;
+      markWhenFrameActuallyStarts(firstVideo);
       safePlay(firstVideo);
-      firstVideo.addEventListener("loadeddata", markVideoReady, { once: true });
-      firstVideo.addEventListener("canplay", markVideoReady, { once: true });
-      firstVideo.addEventListener("error", markVideoReady, { once: true });
       if (firstVideo.readyState >= 2) markVideoReady();
       return;
     }
@@ -115,10 +127,8 @@
       desktopVideos.forEach((video, index) => {
         video.classList.toggle("is-active", index === 0);
       });
+      markWhenFrameActuallyStarts(firstVideo);
       safePlay(firstVideo);
-      firstVideo.addEventListener("loadeddata", markVideoReady, { once: true });
-      firstVideo.addEventListener("canplay", markVideoReady, { once: true });
-      firstVideo.addEventListener("error", markVideoReady, { once: true });
       if (firstVideo.readyState >= 2) markVideoReady();
       return;
     }
@@ -178,10 +188,8 @@
     });
 
     setActiveVideo(activeVideo);
+    markWhenFrameActuallyStarts(firstVideo);
     safePlay(activeVideo);
-    firstVideo.addEventListener("loadeddata", markVideoReady, { once: true });
-    firstVideo.addEventListener("canplay", markVideoReady, { once: true });
-    firstVideo.addEventListener("error", markVideoReady, { once: true });
     if (firstVideo.readyState >= 2) markVideoReady();
   }
 
