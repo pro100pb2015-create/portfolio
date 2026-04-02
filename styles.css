@@ -91,8 +91,24 @@ a {
   transition: opacity 380ms linear;
 }
 
+.desktop-poster {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background:
+    radial-gradient(circle at 18% 20%, rgba(120, 164, 132, 0.34), transparent 44%),
+    radial-gradient(circle at 82% 12%, rgba(160, 190, 214, 0.22), transparent 40%),
+    linear-gradient(180deg, #3f5968 0%, #273f4f 48%, #1a2d38 100%);
+  opacity: 1;
+  transition: opacity 240ms ease;
+}
+
 .desktop-scene.video-ready .desktop-video.is-active {
   opacity: 1;
+}
+
+.desktop-scene.video-ready .desktop-poster {
+  opacity: 0;
 }
 
 .desktop-scene.video-crossfading .desktop-video {
@@ -978,6 +994,13 @@ footer {
     width: 100vw;
     height: 100svh;
     object-fit: cover;
+  }
+
+  .desktop-poster {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100svh;
   }
 
   .desktop-overlay {
