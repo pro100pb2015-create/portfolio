@@ -17,6 +17,7 @@
   const DRAG_MOVE_THRESHOLD = 8;
   const VIDEO_CROSSFADE_MS = 1400;
   const VIDEO_OVERLAP_SECONDS = 1.4;
+  const SKIP_HOME_VIDEO_INTRO_FLAG = "skipHomeVideoIntro";
   const moscowTimeFormatter = new Intl.DateTimeFormat("ru-RU", {
     timeZone: "Europe/Moscow",
     hour: "2-digit",
@@ -88,12 +89,29 @@
 
   function initVideoBackground() {
     if (!desktopVideos.length || !desktopScene) return;
+    const hasEarlyNoIntroClass = document.documentElement.classList.contains("no-home-video-intro");
+    const skipIntroOnce = hasEarlyNoIntroClass || consumeSkipHomeVideoIntroFlag() || shouldSkipVideoIntroByHash();
+    if (skipIntroOnce) {
+      desktopScene.classList.add("skip-video-intro");
+    }
+    const revealHomeUi = () => {
+      if (document.body) {
+        document.body.classList.add("is-ready");
+      }
+    };
 
     let isVideoReadyMarked = false;
     const markVideoReady = () => {
       if (isVideoReadyMarked) return;
       isVideoReadyMarked = true;
       desktopScene.classList.add("video-ready");
+      revealHomeUi();
+      if (skipIntroOnce) {
+        window.requestAnimationFrame(() => {
+          desktopScene.classList.remove("skip-video-intro");
+          document.documentElement.classList.remove("no-home-video-intro");
+        });
+      }
     };
     const isMobileViewport = window.matchMedia("(max-width: 920px)").matches;
     const [firstVideo] = desktopVideos;
@@ -111,6 +129,7 @@
 
     // Last-resort fallback if browser does not dispatch media readiness events.
     window.setTimeout(markVideoReady, 3500);
+    window.setTimeout(revealHomeUi, 4200);
 
     if (desktopVideos.length < 2) {
       firstVideo.loop = true;
@@ -191,6 +210,22 @@
     markWhenFrameActuallyStarts(firstVideo);
     safePlay(activeVideo);
     if (firstVideo.readyState >= 2) markVideoReady();
+  }
+
+  function consumeSkipHomeVideoIntroFlag() {
+    try {
+      const shouldSkip = sessionStorage.getItem(SKIP_HOME_VIDEO_INTRO_FLAG) === "1";
+      if (shouldSkip) {
+        sessionStorage.removeItem(SKIP_HOME_VIDEO_INTRO_FLAG);
+      }
+      return shouldSkip;
+    } catch {
+      return false;
+    }
+  }
+
+  function shouldSkipVideoIntroByHash() {
+    return window.location.hash === "#projects";
   }
 
   function openProjectsWindow() {

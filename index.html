@@ -22,9 +22,34 @@
       referrerpolicy="no-referrer"
     />
 
+    <script>
+      (() => {
+        try {
+          const skipFlag = sessionStorage.getItem("skipHomeVideoIntro") === "1";
+          const fromProjectsHash = window.location.hash === "#projects";
+          if (skipFlag || fromProjectsHash) {
+            document.documentElement.classList.add("no-home-video-intro");
+          }
+        } catch {
+          if (window.location.hash === "#projects") {
+            document.documentElement.classList.add("no-home-video-intro");
+          }
+        }
+      })();
+    </script>
+
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body class="page-home">
+    <div class="preloader" aria-live="polite" aria-label="Загрузка страницы">
+      <div class="preloader-inner">
+        <div class="preloader-wordmark">Влад Ермаков</div>
+        <div class="preloader-bar" role="presentation">
+          <span class="preloader-bar-fill"></span>
+        </div>
+      </div>
+    </div>
+
     <main id="top">
       <section class="desktop-scene" aria-label="Рабочий стол">
         <div class="desktop-poster" aria-hidden="true"></div>

@@ -15,136 +15,139 @@
       rel="stylesheet"
     />
 
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
     <link rel="stylesheet" href="../styles.css" />
   </head>
-  <body>
-    <header class="topbar">
-      <div class="container topbar-inner">
-        <a class="brand" href="../index.html" aria-label="На главную">
-          <span class="brand-mark" aria-hidden="true"></span>
-          <span>UI/UX Portfolio</span>
-        </a>
-        <nav class="nav" aria-label="Навигация">
-          <a href="../index.html#projects">К проектам</a>
-          <a class="nav-resume" href="../assets/resume.pdf" download>
-            <span class="resume-full">Скачать резюме</span>
-            <span class="resume-short">Резюме</span>
-          </a>
-        </nav>
+  <body class="page-detail">
+    <div class="desktop-menubar" aria-label="Текущий статус">
+      <div class="menubar-center">
+        <span class="menubar-title">Москва</span>
+        <span class="menubar-separator">•</span>
+        <span id="moscow-weekday" class="menubar-weekday">---</span>
+        <span id="moscow-time">--:--</span>
       </div>
-    </header>
+      <div class="menubar-right">
+        <i id="work-status-icon" class="fa-solid fa-briefcase menubar-status-icon" aria-hidden="true"></i>
+        <span id="work-status" class="menubar-status">--</span>
+      </div>
+    </div>
 
     <main>
       <div class="container">
-        <div class="breadcrumbs" aria-label="Хлебные крошки">
-          <a href="../index.html">Главная</a>
-          <span>•</span>
-          <span>Проект 1</span>
+        <div class="detail-toolbar">
+          <a class="detail-close" href="../index.html#projects" aria-label="Закрыть страницу проекта">×</a>
         </div>
 
-        <section class="detail-hero" aria-label="Вступление проекта">
+        <section class="detail-hero case-shell" aria-label="Кейс проекта AGIMA">
           <div class="detail-grid">
-            <div class="detail-card">
-              <h1 class="detail-title">Сервис для AGIMA Partners’ Club</h1>
-              <div class="detail-meta">UI/UX • Исследование сценариев • Прототипирование • UI kit</div>
+            <article class="detail-card case-hero-card">
+              <h1 class="detail-title">Сервис для AGIMA Partners&rsquo; Club</h1>
+              <div class="detail-meta">MVP • B2B-платформа • Табличные сценарии • UI system</div>
 
-              <div class="tag-row" aria-label="Теги">
-                <span class="tag">Сценарии</span>
-                <span class="tag">Навигация</span>
-                <span class="tag">Типографика</span>
+              <div class="tag-row" aria-label="Теги проекта">
+                <span class="tag">MVP</span>
+                <span class="tag">JTBD</span>
+                <span class="tag">Таблицы</span>
+                <span class="tag">Дизайн-система</span>
               </div>
 
               <p class="about-text detail-intro-text">
-                Цель проекта — упростить ключевые действия в приложении: от входа до выполнения задачи.
-                Я собрала путь пользователя, выделила “узкие места” и затем спроектировала интерфейс так,
-                чтобы каждый шаг был очевиден.
+                Спроектировала MVP-сервис для AGIMA Partners&rsquo; Club: платформа помогает работать с
+                подрядчиками и их сотрудниками, быстро находить подходящих специалистов и поддерживать данные
+                в актуальном состоянии.
               </p>
 
-              <div class="btn-row">
-                <a class="btn btn-primary" href="../index.html#projects">Назад к проектам</a>
+              <div class="case-facts" aria-label="Краткие факты проекта">
+                <div class="fact-item">
+                  <span class="fact-label">Роль</span>
+                  <span class="fact-value">UX/UI Designer</span>
+                </div>
+                <div class="fact-item">
+                  <span class="fact-label">Фокус</span>
+                  <span class="fact-value">Подбор, фильтры, статусы, редактирование</span>
+                </div>
+                <div class="fact-item">
+                  <span class="fact-label">Ограничения</span>
+                  <span class="fact-value">Сжатые сроки и рост требований по ходу проекта</span>
+                </div>
               </div>
-            </div>
+            </article>
 
-            <div class="hero-media" aria-label="Главное изображение проекта">
-              <!-- Заменить на свою hero-картинку -->
-              <img src="../assets/project-1-hero.png" alt="Hero: мобильное приложение" />
+            <div class="hero-media" aria-label="Превью кейса AGIMA">
+              <img src="../assets/project-1-thumb.png" alt="Превью кейса AGIMA Partners’ Club" />
             </div>
           </div>
         </section>
 
-        <section class="content-section" aria-label="Описание проекта">
-          <!-- Pair 1 -->
-          <div class="pair">
-            <div class="pair-media">
-              <img src="../assets/project-1-screen-1.png" alt="Скрин 1" />
-            </div>
-            <div class="pair-body">
-              <h3>Проблема и решение</h3>
-              <p class="lead">
-                На первом прототипе пользователи путались на этапе выбора сценария. Я разделила поток на
-                понятные ветки и сделала подсказки более “человеческими”.
-              </p>
-              <p>
-                В результате структура стала короче по шагам, а интерфейс — спокойнее: меньше конкурирующих
-                элементов, больше акцента на действии.
-              </p>
-            </div>
-          </div>
+        <section class="content-section case-content" aria-label="Структура кейса AGIMA">
+          <article class="case-section">
+            <h2 class="section-title">Контекст</h2>
+            <p class="section-text">
+              MVP-сервис для партнеров AGIMA, которые выделяют сотрудников под клиентские проекты. Важно было
+              быстро запустить рабочий инструмент и заложить основу под дальнейшее развитие продукта.
+            </p>
+          </article>
 
-          <!-- Pair 2 (reverse) -->
-          <div class="pair reverse">
-            <div class="pair-media">
-              <img src="../assets/project-1-screen-2.png" alt="Скрин 2" />
-            </div>
-            <div class="pair-body">
-              <h3>UI kit и система</h3>
-              <p class="lead">
-                Собрала компоненты под масштабирование: кнопки, формы, карточки и навигация.
-              </p>
-              <p>
-                Типографика придерживается одной логики размеров и межстрочного интервала, а цветовые акценты
-                помогают быстро “сканировать” экран.
-              </p>
-            </div>
-          </div>
+          <article class="case-section">
+            <h2 class="section-title">Задача</h2>
+            <p class="section-text">
+              За короткий срок спроектировать понятный и удобный интерфейс для подбора специалистов, работы с
+              таблицами и управления статусами, чтобы сократить операционные потери и ускорить работу команды.
+            </p>
+          </article>
 
-          <!-- Spoiler -->
-          <div class="spoiler-wrap">
+          <article class="case-section">
+            <h2 class="section-title">Ключевые решения</h2>
+            <ul class="case-list">
+              <li>Сформулировала JTBD и гипотезы под реальные сценарии выбора специалистов.</li>
+              <li>Вынесла уволенных сотрудников в архив, сохранив доступ к истории.</li>
+              <li>Добавила расширенные фильтры по ставке, специализации и доступности.</li>
+              <li>Визуально обозначила статусы и этапы прямо в таблице.</li>
+              <li>Открыла быстрый переход к редактированию из строки таблицы.</li>
+            </ul>
+          </article>
+
+          <article class="case-section">
+            <h2 class="section-title">Результат</h2>
+            <p class="section-text">
+              Интерфейс стал легче для ежедневной работы: искать, фильтровать, сортировать и обновлять данные
+              можно быстрее, а ключевая информация заметна без лишнего визуального шума. Параллельно удалось
+              заложить компонентную базу для масштабирования следующих релизов.
+            </p>
+          </article>
+
+          <div class="spoiler-wrap case-secondary">
             <details>
-              <summary>Спойлер: что я бы улучшила дальше</summary>
+              <summary>Показать процесс: подготовка, бенчмаркинг и прототип</summary>
               <div class="spoiler-content">
-                Дальше я хочу протестировать альтернативные формулировки CTA и уточнить поведение пустых
-                состояний. Также планирую добавить микро-анимации для большей “отзывчивости” интерфейса.
+                Начала с изучения вводных и уточнения деталей по документам. Далее собрала бенчмаркинг по
+                похожим сервисам, чтобы выбрать рабочие паттерны для таблиц и статусов. Прототип делала
+                целенаправленно в умеренной детализации: он использовался как быстрый инструмент синхронизации
+                логики с командой и заказчиком в условиях сжатых сроков.
               </div>
             </details>
           </div>
 
-          <!-- Pair 3 -->
-          <div class="pair">
-            <div class="pair-media">
-              <img src="../assets/project-1-mockup.png" alt="Макет" />
-            </div>
-            <div class="pair-body">
-              <h3>Итог</h3>
-              <p>
-                Интерфейс стал более последовательным и предсказуемым: пользователям легче понять, что делать
-                дальше, и проще ориентироваться в сценариях.
-              </p>
-              <p class="muted detail-note">
-                (Заменишь этот текст на свои выводы — можно короче или наоборот более подробно.)
-              </p>
-            </div>
+          <div class="spoiler-wrap case-secondary">
+            <details>
+              <summary>Показать сложности и что помогло их решить</summary>
+              <div class="spoiler-content">
+                Основная сложность была в вариативности таблиц: множество колонок, состояний и неочевидные
+                статусы. Решила это через системный подход: собрала библиотеку ячеек с состояниями, сгруппировала
+                статусы, ввела цветовую индикацию и опиралась на единую систему шрифтов, цветов и компонентов.
+                Это позволило безболезненно внедрять дополнительные требования, появившиеся в процессе.
+              </div>
+            </details>
           </div>
         </section>
       </div>
     </main>
-
-    <footer class="container">
-      <div class="footer-row">
-        <div class="muted">© <span id="year"></span> Имя Фамилия</div>
-        <a class="muted" href="../index.html">На главную</a>
-      </div>
-    </footer>
 
     <script src="../project-page.js" defer></script>
   </body>

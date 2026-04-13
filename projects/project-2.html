@@ -15,132 +15,137 @@
       rel="stylesheet"
     />
 
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
     <link rel="stylesheet" href="../styles.css" />
   </head>
-  <body>
-    <header class="topbar">
-      <div class="container topbar-inner">
-        <a class="brand" href="../index.html" aria-label="На главную">
-          <span class="brand-mark" aria-hidden="true"></span>
-          <span>UI/UX Portfolio</span>
-        </a>
-        <nav class="nav" aria-label="Навигация">
-          <a href="../index.html#projects">К проектам</a>
-          <a class="nav-resume" href="../assets/resume.pdf" download>
-            <span class="resume-full">Скачать резюме</span>
-            <span class="resume-short">Резюме</span>
-          </a>
-        </nav>
+  <body class="page-detail">
+    <div class="desktop-menubar" aria-label="Текущий статус">
+      <div class="menubar-center">
+        <span class="menubar-title">Москва</span>
+        <span class="menubar-separator">•</span>
+        <span id="moscow-weekday" class="menubar-weekday">---</span>
+        <span id="moscow-time">--:--</span>
       </div>
-    </header>
+      <div class="menubar-right">
+        <i id="work-status-icon" class="fa-solid fa-briefcase menubar-status-icon" aria-hidden="true"></i>
+        <span id="work-status" class="menubar-status">--</span>
+      </div>
+    </div>
 
     <main>
       <div class="container">
-        <div class="breadcrumbs" aria-label="Хлебные крошки">
-          <a href="../index.html">Главная</a>
-          <span>•</span>
-          <span>Проект 2</span>
+        <div class="detail-toolbar">
+          <a class="detail-close" href="../index.html#projects" aria-label="Закрыть страницу проекта">×</a>
         </div>
 
-        <section class="detail-hero" aria-label="Вступление проекта">
+        <section class="detail-hero case-shell" aria-label="Кейс проекта ресторана «Роща»">
           <div class="detail-grid">
-            <div class="detail-card">
+            <article class="detail-card case-hero-card">
               <h1 class="detail-title">Сайт для ресторана «Роща»</h1>
-              <div class="detail-meta">UI/UX • Информационная архитектура • UI kit</div>
+              <div class="detail-meta">Ресторанный сайт • UX/UI • Визуальная концепция • Поэтапный запуск</div>
 
-              <div class="tag-row" aria-label="Теги">
-                <span class="tag">IA</span>
-                <span class="tag">Читаемость</span>
-                <span class="tag">Компоненты</span>
+              <div class="tag-row" aria-label="Теги проекта">
+                <span class="tag">Информационная архитектура</span>
+                <span class="tag">Концепция</span>
+                <span class="tag">Итерации</span>
+                <span class="tag">Масштабирование</span>
               </div>
 
               <p class="about-text detail-intro-text">
-                Нужно было привести интерфейс к единой логике и улучшить читаемость. Я переосмыслила
-                структуру страниц, выстроила иерархию блоков и собрала набор компонентов для будущих
-                сценариев.
+                Разработала сайт для современного семейного ресторана. Главная цель — передать атмосферу бренда
+                и дать удобный путь к ключевым действиям: просмотр меню, знакомство с заведением и подготовка к
+                следующему этапу с доставкой и личным кабинетом.
               </p>
 
-              <div class="btn-row">
-                <a class="btn btn-primary" href="../index.html#projects">Назад к проектам</a>
+              <div class="case-facts" aria-label="Краткие факты проекта">
+                <div class="fact-item">
+                  <span class="fact-label">Роль</span>
+                  <span class="fact-value">UX/UI Designer</span>
+                </div>
+                <div class="fact-item">
+                  <span class="fact-label">Этап 1</span>
+                  <span class="fact-value">Быстрый запуск core-версии без доставки и аккаунта</span>
+                </div>
+                <div class="fact-item">
+                  <span class="fact-label">Этап 2</span>
+                  <span class="fact-value">Возврат клиента за расширением функциональности</span>
+                </div>
               </div>
-            </div>
+            </article>
 
-            <div class="hero-media" aria-label="Главное изображение проекта">
-              <img src="../assets/project-2-hero.png" alt="Hero: веб-сервис" />
+            <div class="hero-media" aria-label="Превью кейса ресторана «Роща»">
+              <img src="../assets/project-2-thumb.png" alt="Превью кейса ресторана «Роща»" />
             </div>
           </div>
         </section>
 
-        <section class="content-section" aria-label="Описание проекта">
-          <!-- Pair 1 -->
-          <div class="pair">
-            <div class="pair-media">
-              <img src="../assets/project-2-screen-1.png" alt="Скрин 1" />
-            </div>
-            <div class="pair-body">
-              <h3>Структура и навигация</h3>
-              <p class="lead">
-                На страницах было много визуального “шума”. Я выделила ключевые смысловые блоки и
-                перестроила навигацию вокруг задач пользователя.
-              </p>
-              <p>
-                Итог: меньше шагов до нужной информации, более предсказуемые паттерны и ясная
-                “картина” страницы.
-              </p>
-            </div>
-          </div>
+        <section class="content-section case-content" aria-label="Структура кейса ресторана «Роща»">
+          <article class="case-section">
+            <h2 class="section-title">Контекст</h2>
+            <p class="section-text">
+              «Роща» — современный семейный ресторан с русской и европейской кухней. Визуальный язык проекта
+              должен был передавать атмосферу: дневную легкость, вечерний уют и ощущение связи с природой.
+            </p>
+          </article>
 
-          <!-- Pair 2 (reverse) -->
-          <div class="pair reverse">
-            <div class="pair-media">
-              <img src="../assets/project-2-screen-2.png" alt="Скрин 2" />
-            </div>
-            <div class="pair-body">
-              <h3>Новый UI kit</h3>
-              <p class="lead">
-                Собрала компоненты, типографику и состояния — чтобы дизайн оставался единым при
-                масштабировании.
-              </p>
-              <p>
-                Акцентные цвета используются дозированно: кнопки, ключевые CTA и ссылки получают
-                одинаковую “глубину” и визуальный вес.
-              </p>
-            </div>
-          </div>
+          <article class="case-section">
+            <h2 class="section-title">Задача</h2>
+            <p class="section-text">
+              Создать сайт, на котором пользователь может быстро познакомиться с рестораном и меню, при этом
+              сохранить эмоциональный характер бренда. Запуск разбили на этапы: сначала базовая версия, затем
+              расширение функциями доставки и личного кабинета.
+            </p>
+          </article>
 
-          <!-- Pair 3 with spoiler -->
-          <div class="pair">
-            <div class="pair-media">
-              <img src="../assets/project-2-mockup.png" alt="Макет" />
-            </div>
-            <div class="pair-body">
-              <h3>Детали, которые держат качество</h3>
-              <p>
-                Я зафиксировала правила: от сетки и отступов до поведения элементов в состояниях hover/active.
-                Это помогает интерфейсу быть стабильным и “дорогим”.
-              </p>
+          <article class="case-section">
+            <h2 class="section-title">Ключевые решения</h2>
+            <ul class="case-list">
+              <li>Согласовала ожидания через систему тегов и визуальные ориентиры с клиентом и арт-директором.</li>
+              <li>Собрала референсы под каждый тег и проверила выбранное направление на концепте главной.</li>
+              <li>Прошла несколько итераций: от коллажного скетча до финальной концепции.</li>
+              <li>Фиксировала повторяемые стили и закономерности, чтобы масштабировать дизайн дальше.</li>
+            </ul>
+          </article>
 
-              <div class="spoiler-inline-wrap">
-                <details>
-                  <summary>Спойлер: как я оформляла текст</summary>
-                  <div class="spoiler-content">
-                    Сделала короткие lead-абзацы, основной текст с комфортной шириной строк и единый стиль
-                    заголовков. Плюс — выравнивание по смыслу, а не по “красоте в вакууме”.
-                  </div>
-                </details>
+          <article class="case-section">
+            <h2 class="section-title">Результат</h2>
+            <p class="section-text">
+              Получился удобный и атмосферный сайт, который выполняет ключевые задачи первого релиза. После
+              запуска клиент вернулся за второй фазой и подтвержденным расширением функционала.
+            </p>
+          </article>
+
+          <div class="spoiler-wrap case-secondary">
+            <details>
+              <summary>Показать процесс: карта сайта, прототип и концепция</summary>
+              <div class="spoiler-content">
+                На старте собрала карту сайта и выделила основной объем первого релиза. Далее подготовила
+                прототип, чтобы быстро проверить структуру и логику. Концепцию строила через главную страницу:
+                сначала собрала ее из фрагментов референсов, затем довела до финальной версии через итерации и
+                согласование с клиентом.
               </div>
-            </div>
+            </details>
+          </div>
+
+          <div class="spoiler-wrap case-secondary">
+            <details>
+              <summary>Показать рабочие материалы: бриф, теги и референсы</summary>
+              <div class="spoiler-content">
+                Бриф помог зафиксировать бизнес-задачи, а теги — синхронизировать эстетические ожидания до
+                детальной отрисовки. Такой подход дал общий язык с командой и заказчиком и снизил риск
+                расхождений на поздних этапах.
+              </div>
+            </details>
           </div>
         </section>
       </div>
     </main>
-
-    <footer class="container">
-      <div class="footer-row">
-        <div class="muted">© <span id="year"></span> Имя Фамилия</div>
-        <a class="muted" href="../index.html">На главную</a>
-      </div>
-    </footer>
 
     <script src="../project-page.js" defer></script>
   </body>
