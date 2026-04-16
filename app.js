@@ -89,15 +89,56 @@
 
   function initVideoBackground() {
     if (!desktopVideos.length || !desktopScene) return;
+    const MIN_PRELOADER_MS = 1000;
+    const preloaderStartedAt = performance.now();
+    let isHomeUiRevealScheduled = false;
     const hasEarlyNoIntroClass = document.documentElement.classList.contains("no-home-video-intro");
     const skipIntroOnce = hasEarlyNoIntroClass || consumeSkipHomeVideoIntroFlag() || shouldSkipVideoIntroByHash();
     if (skipIntroOnce) {
       desktopScene.classList.add("skip-video-intro");
     }
-    const revealHomeUi = () => {
-      if (document.body) {
-        document.body.classList.add("is-ready");
+    const revealAfterCurrentPreloaderSlide = () => {
+      const preloaderVisuals = Array.from(document.querySelectorAll(".preloader-visual"));
+      if (!preloaderVisuals.length || !document.body) {
+        document.body?.classList.add("is-ready");
+        return;
       }
+
+      const getVisibleSlideIndex = () =>
+        preloaderVisuals.findIndex((node) => Number.parseFloat(getComputedStyle(node).opacity) > 0.5);
+
+      const initialSlideIndex = getVisibleSlideIndex();
+      if (initialSlideIndex < 0) {
+        document.body.classList.add("is-ready");
+        return;
+      }
+
+      let attempts = 0;
+      const maxAttempts = 20;
+      const checkSlideBoundary = () => {
+        if (!document.body || document.body.classList.contains("is-ready")) return;
+        const currentSlideIndex = getVisibleSlideIndex();
+        if (currentSlideIndex >= 0 && currentSlideIndex !== initialSlideIndex) {
+          document.body.classList.add("is-ready");
+          return;
+        }
+        attempts += 1;
+        if (attempts >= maxAttempts) {
+          document.body.classList.add("is-ready");
+          return;
+        }
+        window.setTimeout(checkSlideBoundary, 30);
+      };
+
+      window.setTimeout(checkSlideBoundary, 30);
+    };
+
+    const revealHomeUi = () => {
+      if (isHomeUiRevealScheduled) return;
+      isHomeUiRevealScheduled = true;
+      const elapsed = performance.now() - preloaderStartedAt;
+      const delay = Math.max(0, MIN_PRELOADER_MS - elapsed);
+      window.setTimeout(revealAfterCurrentPreloaderSlide, delay);
     };
 
     let isVideoReadyMarked = false;

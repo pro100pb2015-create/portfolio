@@ -44,7 +44,10 @@ body.page-home {
   display: grid;
   place-items: center;
   background: #10182f;
-  transition: opacity 260ms ease, visibility 260ms ease;
+  animation: preloaderBgPulse 1.8s steps(1, end) infinite;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 220ms ease 340ms, visibility 0s linear 560ms;
 }
 
 .preloader-inner {
@@ -69,24 +72,61 @@ body.page-home {
   color: #fff;
   text-shadow: none;
   white-space: nowrap;
+  z-index: 3;
+}
+
+.preloader-visuals {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
   z-index: 2;
 }
 
-.preloader-bar {
+.preloader-visual {
   position: absolute;
-  inset: 0;
-  overflow: hidden;
-  background: transparent;
-  z-index: 1;
+  width: min(58vw, 520px);
+  max-height: min(58vh, 520px);
+  object-fit: contain;
+  opacity: 0;
+  animation-duration: 1.8s;
+  animation-timing-function: steps(1, end);
+  animation-iteration-count: infinite;
+}
+
+.preloader-visual-1 {
+  animation-name: preloaderVisualPhase1;
+}
+
+.preloader-visual-2 {
+  animation-name: preloaderVisualPhase2;
+}
+
+.preloader-visual-3 {
+  animation-name: preloaderVisualPhase3;
+}
+
+.preloader-visual-4 {
+  animation-name: preloaderVisualPhase4;
+}
+
+.preloader-bar {
+  display: none;
 }
 
 .preloader-bar-fill {
-  display: block;
-  width: 100%;
-  height: 100%;
-  background: rgba(255, 255, 255, 0.08);
-  transform-origin: left center;
-  animation: preloaderScreenFill 2.2s cubic-bezier(0.22, 0.61, 0.36, 1) infinite;
+  display: none;
+}
+
+body.is-ready .preloader-visuals {
+  opacity: 0;
+  transition: opacity 180ms ease-out;
+}
+
+body.is-ready .preloader,
+body.is-ready .preloader * {
+  animation-play-state: paused !important;
 }
 
 body.is-ready .preloader {
@@ -95,17 +135,65 @@ body.is-ready .preloader {
   pointer-events: none;
 }
 
-@keyframes preloaderScreenFill {
-  0% {
-    transform: scaleX(0);
+@keyframes preloaderBgPulse {
+  0% { background-color: #007bff; }
+  25% { background-color: #b83a53; }
+  50% { background-color: #6d28d9; }
+  75% { background-color: #eb4d1f; }
+  100% { background-color: #007bff; }
+}
+
+@keyframes preloaderVisualPhase1 {
+  0%,
+  24.99% {
     opacity: 1;
   }
-  75% {
-    transform: scaleX(1);
+  25%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes preloaderVisualPhase2 {
+  0%,
+  24.99% {
+    opacity: 0;
+  }
+  25%,
+  49.99% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes preloaderVisualPhase3 {
+  0%,
+  49.99% {
+    opacity: 0;
+  }
+  50%,
+  74.99% {
+    opacity: 1;
+  }
+  75%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes preloaderVisualPhase4 {
+  0%,
+  74.99% {
+    opacity: 0;
+  }
+  75%,
+  99.99% {
     opacity: 1;
   }
   100% {
-    transform: scaleX(1);
     opacity: 0;
   }
 }
@@ -647,8 +735,9 @@ a {
 .desktop-window .project-card {
   background: transparent;
   border: 0;
-  border-radius: 16px;
+  border-radius: 0;
   padding: 0;
+  overflow: visible;
 }
 
 .desktop-window .project-thumb {
@@ -657,7 +746,7 @@ a {
 
 .desktop-window .project-body {
   width: 83.3333%;
-  padding: 16px 2px 2px;
+  padding: 12px 2px 2px;
 }
 
 .desktop-window .project-title {
@@ -667,6 +756,7 @@ a {
 }
 
 .desktop-window .project-desc {
+  margin: 6px 0 0;
   font-size: 14px;
   font-weight: 600;
   line-height: 1.2;
@@ -1316,6 +1406,32 @@ footer {
 
   .page-detail main {
     padding-top: 40px;
+  }
+
+  .preloader-wordmark {
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 32px;
+    transform: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: 0.02em;
+    text-align: center;
+  }
+
+  .preloader-visual {
+    width: min(76vw, 460px);
+    max-height: min(42vh, 360px);
+  }
+
+  .preloader-bar {
+    top: 72%;
+    transform: translateY(-50%);
   }
 
 

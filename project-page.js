@@ -1,5 +1,8 @@
 (() => {
   const SKIP_HOME_VIDEO_INTRO_FLAG = "skipHomeVideoIntro";
+  const MIN_PRELOADER_MS = 700;
+  const preloaderStartedAt = performance.now();
+  let isPageRevealScheduled = false;
   const yearElement = document.getElementById("year");
   const closeDetailLinks = Array.from(document.querySelectorAll(".detail-close"));
   const moscowTime = document.getElementById("moscow-time");
@@ -69,6 +72,55 @@
     window.setInterval(updateMoscowTime, 1000);
     window.setInterval(updateMoscowMeta, 60 * 1000);
   }
+
+  const revealPageUi = () => {
+    if (isPageRevealScheduled) return;
+    isPageRevealScheduled = true;
+    const elapsed = performance.now() - preloaderStartedAt;
+    const delay = Math.max(0, MIN_PRELOADER_MS - elapsed);
+    window.setTimeout(() => {
+      const preloaderVisuals = Array.from(document.querySelectorAll(".preloader-visual"));
+      if (!preloaderVisuals.length || !document.body) {
+        document.body?.classList.add("is-ready");
+        return;
+      }
+
+      const getVisibleSlideIndex = () =>
+        preloaderVisuals.findIndex((node) => Number.parseFloat(getComputedStyle(node).opacity) > 0.5);
+
+      const initialSlideIndex = getVisibleSlideIndex();
+      if (initialSlideIndex < 0) {
+        document.body.classList.add("is-ready");
+        return;
+      }
+
+      let attempts = 0;
+      const maxAttempts = 20;
+      const checkSlideBoundary = () => {
+        if (!document.body || document.body.classList.contains("is-ready")) return;
+        const currentSlideIndex = getVisibleSlideIndex();
+        if (currentSlideIndex >= 0 && currentSlideIndex !== initialSlideIndex) {
+          document.body.classList.add("is-ready");
+          return;
+        }
+        attempts += 1;
+        if (attempts >= maxAttempts) {
+          document.body.classList.add("is-ready");
+          return;
+        }
+        window.setTimeout(checkSlideBoundary, 30);
+      };
+
+      window.setTimeout(checkSlideBoundary, 30);
+    }, delay);
+  };
+
+  if (document.readyState === "complete") {
+    revealPageUi();
+  } else {
+    window.addEventListener("load", revealPageUi, { once: true });
+  }
+  window.setTimeout(revealPageUi, 1800);
 
   const markSkipHomeVideoIntro = () => {
     try {
