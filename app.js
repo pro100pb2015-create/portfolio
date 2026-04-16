@@ -157,8 +157,7 @@
       video.addEventListener("timeupdate", onTimeUpdate);
     };
 
-    // Last-resort fallback if browser does not dispatch media readiness events.
-    window.setTimeout(markVideoReady, 3500);
+    // Fallback: do not block UI forever, but keep poster until video actually starts.
     window.setTimeout(revealHomeUi, 4200);
 
     if (desktopVideos.length < 2) {
@@ -178,6 +177,18 @@
       });
       markWhenFrameActuallyStarts(firstVideo);
       safePlay(firstVideo);
+      const retryFirstVideoPlay = () => {
+        if (isVideoReadyMarked) return;
+        safePlay(firstVideo);
+      };
+      window.addEventListener("pageshow", retryFirstVideoPlay, { once: true });
+      document.addEventListener("visibilitychange", () => {
+        if (document.visibilityState === "visible") {
+          retryFirstVideoPlay();
+        }
+      });
+      window.addEventListener("pointerdown", retryFirstVideoPlay, { once: true, passive: true });
+      window.addEventListener("touchstart", retryFirstVideoPlay, { once: true, passive: true });
       if (firstVideo.readyState >= 2) markVideoReady();
       return;
     }
