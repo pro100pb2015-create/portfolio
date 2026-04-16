@@ -98,39 +98,28 @@
       desktopScene.classList.add("skip-video-intro");
     }
     const revealAfterCurrentPreloaderSlide = () => {
-      const preloaderVisuals = Array.from(document.querySelectorAll(".preloader-visual"));
-      if (!preloaderVisuals.length || !document.body) {
-        document.body?.classList.add("is-ready");
-        return;
-      }
-
-      const getVisibleSlideIndex = () =>
-        preloaderVisuals.findIndex((node) => Number.parseFloat(getComputedStyle(node).opacity) > 0.5);
-
-      const initialSlideIndex = getVisibleSlideIndex();
-      if (initialSlideIndex < 0) {
-        document.body.classList.add("is-ready");
-        return;
-      }
-
-      let attempts = 0;
-      const maxAttempts = 20;
-      const checkSlideBoundary = () => {
-        if (!document.body || document.body.classList.contains("is-ready")) return;
-        const currentSlideIndex = getVisibleSlideIndex();
-        if (currentSlideIndex >= 0 && currentSlideIndex !== initialSlideIndex) {
+      const revealNow = () => {
+        if (document.body && !document.body.classList.contains("is-ready")) {
           document.body.classList.add("is-ready");
-          return;
         }
-        attempts += 1;
-        if (attempts >= maxAttempts) {
-          document.body.classList.add("is-ready");
-          return;
-        }
-        window.setTimeout(checkSlideBoundary, 30);
       };
 
-      window.setTimeout(checkSlideBoundary, 30);
+      const ticker = document.querySelector(".preloader-ticker");
+      if (!ticker) {
+        revealNow();
+        return;
+      }
+
+      let isRevealed = false;
+      const revealOnce = () => {
+        if (isRevealed) return;
+        isRevealed = true;
+        ticker.removeEventListener("animationiteration", revealOnce);
+        revealNow();
+      };
+
+      ticker.addEventListener("animationiteration", revealOnce, { once: true });
+      window.setTimeout(revealOnce, 520);
     };
 
     const revealHomeUi = () => {

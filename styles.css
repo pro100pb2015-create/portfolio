@@ -84,6 +84,17 @@ body.page-home {
   z-index: 2;
 }
 
+.preloader-ticker {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  pointer-events: none;
+  animation: preloaderSlideTick 450ms linear infinite;
+}
+
 .preloader-visual {
   position: absolute;
   width: min(58vw, 520px);
@@ -195,6 +206,15 @@ body.is-ready .preloader {
   }
   100% {
     opacity: 0;
+  }
+}
+
+@keyframes preloaderSlideTick {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(1px);
   }
 }
 
