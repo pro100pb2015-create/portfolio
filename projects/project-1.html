@@ -6,7 +6,7 @@
     <title>Сервис для AGIMA Partners’ Club — Портфолио UI/UX</title>
     <meta name="description" content="Детальная страница проекта: сервис для AGIMA Partners’ Club." />
     <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
-    <link rel="apple-touch-icon" href="../assets/me.png" />
+    <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -34,9 +34,6 @@
           <img class="preloader-visual preloader-visual-2" src="../assets/preloader-2.png" alt="" />
           <img class="preloader-visual preloader-visual-3" src="../assets/preloader-3.png" alt="" />
           <img class="preloader-visual preloader-visual-4" src="../assets/preloader-4.png" alt="" />
-        </div>
-        <div class="preloader-bar" role="presentation">
-          <span class="preloader-bar-fill"></span>
         </div>
       </div>
     </div>
@@ -96,7 +93,15 @@
             </article>
 
             <div class="hero-media" aria-label="Превью кейса AGIMA">
-              <img src="../assets/project-1-thumb.png" alt="Превью кейса AGIMA Partners’ Club" />
+              <img
+                src="../assets/project-1-thumb.jpg"
+                srcset="../assets/project-1-thumb-960.jpg 960w, ../assets/project-1-thumb.jpg 1920w"
+                sizes="(max-width: 920px) 100vw, 900px"
+                alt="Превью кейса AGIMA Partners’ Club"
+                width="1920"
+                height="1069"
+                decoding="async"
+              />
             </div>
           </div>
         </section>

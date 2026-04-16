@@ -122,14 +122,6 @@ body.page-home {
   animation-name: preloaderVisualPhase4;
 }
 
-.preloader-bar {
-  display: none;
-}
-
-.preloader-bar-fill {
-  display: none;
-}
-
 body.is-ready .preloader-visuals {
   opacity: 0;
   transition: opacity 180ms ease-out;
@@ -1448,12 +1440,6 @@ footer {
     width: min(76vw, 460px);
     max-height: min(42vh, 360px);
   }
-
-  .preloader-bar {
-    top: 72%;
-    transform: translateY(-50%);
-  }
-
 
   .detail-toolbar {
     position: static;

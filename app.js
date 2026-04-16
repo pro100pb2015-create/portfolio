@@ -92,6 +92,7 @@
     const MIN_PRELOADER_MS = 1000;
     const preloaderStartedAt = performance.now();
     let isHomeUiRevealScheduled = false;
+    let cleanupMobileRetryListeners = null;
     const hasEarlyNoIntroClass = document.documentElement.classList.contains("no-home-video-intro");
     const skipIntroOnce = hasEarlyNoIntroClass || consumeSkipHomeVideoIntroFlag() || shouldSkipVideoIntroByHash();
     if (skipIntroOnce) {
@@ -134,6 +135,10 @@
     const markVideoReady = () => {
       if (isVideoReadyMarked) return;
       isVideoReadyMarked = true;
+      if (typeof cleanupMobileRetryListeners === "function") {
+        cleanupMobileRetryListeners();
+        cleanupMobileRetryListeners = null;
+      }
       desktopScene.classList.add("video-ready");
       revealHomeUi();
       if (skipIntroOnce) {
@@ -181,14 +186,18 @@
         if (isVideoReadyMarked) return;
         safePlay(firstVideo);
       };
-      window.addEventListener("pageshow", retryFirstVideoPlay, { once: true });
-      document.addEventListener("visibilitychange", () => {
+      const onVisibilityChange = () => {
         if (document.visibilityState === "visible") {
           retryFirstVideoPlay();
         }
-      });
+      };
+      window.addEventListener("pageshow", retryFirstVideoPlay, { once: true });
+      document.addEventListener("visibilitychange", onVisibilityChange);
       window.addEventListener("pointerdown", retryFirstVideoPlay, { once: true, passive: true });
       window.addEventListener("touchstart", retryFirstVideoPlay, { once: true, passive: true });
+      cleanupMobileRetryListeners = () => {
+        document.removeEventListener("visibilitychange", onVisibilityChange);
+      };
       if (firstVideo.readyState >= 2) markVideoReady();
       return;
     }
