@@ -946,6 +946,18 @@ a {
   border-radius: var(--radius-lg);
 }
 
+.case-result-media {
+  margin-top: 16px;
+}
+
+.page-detail .spoiler-content .spoiler-lead + .hero-media {
+  margin-top: 12px;
+}
+
+.page-detail .spoiler-content .hero-media + .spoiler-subtitle {
+  margin-top: 22px;
+}
+
 .detail-title {
   margin: 0;
   font-size: clamp(26px, 3.5vw, 44px);
@@ -1026,7 +1038,7 @@ a {
 
 body.page-detail {
   min-height: 100svh;
-  background: #10182f;
+  background: #070c18;
 }
 
 .page-detail .desktop-menubar {
@@ -1043,6 +1055,12 @@ body.page-detail {
 
 .page-detail main {
   padding-top: 48px;
+}
+
+@media (min-width: 921px) {
+  .page-detail main {
+    padding-top: 120px;
+  }
 }
 
 .page-detail .container {
@@ -1096,6 +1114,12 @@ body.page-detail {
   backdrop-filter: none;
 }
 
+.page-detail .case-hero-card {
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+}
+
 .page-detail .case-section,
 .page-detail details {
   border: 0;
@@ -1136,17 +1160,25 @@ body.page-detail {
 }
 
 .page-detail .fact-label {
-  color: rgba(241, 246, 255, 0.72);
+  color: rgba(241, 246, 255, 0.36);
 }
 
 @media (min-width: 1280px) {
   .page-detail .case-facts {
     position: fixed;
-    top: 86px;
+    top: 120px;
     left: 16px;
     width: 260px;
     margin-top: 0;
     z-index: 35;
+  }
+
+  .page-detail .case-content {
+    padding-left: 48px;
+  }
+
+  .page-detail .detail-hero {
+    padding-left: 48px;
   }
 }
 
@@ -1165,7 +1197,7 @@ body.page-detail {
 .page-detail summary::before {
   content: "";
   position: absolute;
-  left: -58px;
+  left: -50px;
   top: 50%;
   width: 26px;
   height: 26px;
@@ -1188,9 +1220,33 @@ body.page-detail {
   margin-top: 10px;
 }
 
+.page-detail .spoiler-subtitle {
+  margin: 0 0 6px;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: #ffffff;
+}
+
+.page-detail .spoiler-lead {
+  margin: 0 0 10px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.35;
+  color: rgba(241, 246, 255, 0.78);
+}
+
 .page-detail .about-text {
   color: rgba(246, 249, 255, 0.94);
-  max-width: 75%;
+  max-width: 88%;
+}
+
+.page-detail .hero-lead {
+  padding-left: 0;
+}
+
+.page-detail .hero-lead .detail-intro-text {
+  margin-top: 10px;
 }
 
 .page-detail .detail-hero {

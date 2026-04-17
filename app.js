@@ -58,9 +58,9 @@
       return { text: "Работаю", iconClass: "fa-pen-ruler" };
     }
     if (isWeekend) {
-      return { text: "Отдых от рабочей недели", iconClass: "fa-face-smile" };
+      return { text: "Отдыхаю", iconClass: "fa-face-smile" };
     }
-    return { text: "Вне рабочего времени", iconClass: "fa-moon" };
+    return { text: "Отдыхаю", iconClass: "fa-moon" };
   }
 
   function updateMoscowMeta() {
