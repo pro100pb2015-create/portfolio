@@ -1228,6 +1228,11 @@ body.page-detail {
   color: #ffffff;
 }
 
+.page-detail .spoiler-subtitle + .spoiler-subtitle,
+.page-detail .spoiler-lead + .spoiler-subtitle {
+  margin-top: 18px;
+}
+
 .page-detail .spoiler-lead {
   margin: 0 0 10px;
   font-size: 14px;
