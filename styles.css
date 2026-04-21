@@ -7,7 +7,7 @@
   --desktop-edge-offset: 42px;
   --desktop-widget-width: 334px;
   --desktop-app-row-top: 286px;
-  --desktop-window-head-height: 58px;
+  --desktop-window-head-height: 40px;
   --glass-bg-soft: linear-gradient(145deg, rgba(255, 255, 255, 0.26), rgba(255, 255, 255, 0.08));
   --glass-bg-strong: linear-gradient(145deg, rgba(255, 255, 255, 0.34), rgba(255, 255, 255, 0.14));
   --glass-shadow-strong: 0 24px 42px rgba(2, 10, 32, 0.26);
@@ -690,6 +690,9 @@ a {
 
 .desktop-window-head {
   height: var(--desktop-window-head-height);
+  min-height: var(--desktop-window-head-height);
+  max-height: var(--desktop-window-head-height);
+  flex: 0 0 var(--desktop-window-head-height);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -699,6 +702,15 @@ a {
   box-shadow: var(--glass-shadow-strong);
   backdrop-filter: var(--glass-blur-strong);
   pointer-events: auto;
+}
+
+.page-home .desktop-window-head {
+  height: var(--desktop-window-head-height) !important;
+  min-height: var(--desktop-window-head-height) !important;
+  max-height: var(--desktop-window-head-height) !important;
+  flex: 0 0 var(--desktop-window-head-height) !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
 }
 
 .window-pill {
@@ -1586,8 +1598,20 @@ footer {
 
   .desktop-window-head {
     height: 46px;
+    min-height: 46px;
+    max-height: 46px;
+    flex: 0 0 46px;
     border-radius: 11px;
     margin: 0 10px;
+  }
+
+  .page-home .desktop-window-head {
+    height: 46px !important;
+    min-height: 46px !important;
+    max-height: 46px !important;
+    flex: 0 0 46px !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
   }
 
   .desktop-window-head .window-close {
