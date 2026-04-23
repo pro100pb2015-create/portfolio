@@ -1,4 +1,15 @@
 (() => {
+  // Local file fallback:
+  // when opening via file:// some browsers show directory listing for folder links.
+  if (window.location.protocol === "file:") {
+    document.querySelectorAll(".project-card[href]").forEach((link) => {
+      const href = link.getAttribute("href");
+      if (href && href.endsWith("/")) {
+        link.setAttribute("href", `${href}index.html`);
+      }
+    });
+  }
+
   const moscowTime = document.getElementById("moscow-time");
   const moscowWeekday = document.getElementById("moscow-weekday");
   const workStatus = document.getElementById("work-status");

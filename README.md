@@ -5,8 +5,8 @@
 ## Что открыть
 - Главная: `index.html`
 - Детальные проекты:
-  - `projects/project-1.html`
-  - `projects/project-2.html`
+  - `projects/project-1/index.html`
+  - `projects/project-2/index.html`
 
 ## Где менять контент
 - Имя, роль, ссылки, текст: `index.html`
@@ -26,4 +26,3 @@
 - любой обычный static hosting
 
 Пока без сборщиков и без сложного JS — чтобы было максимально просто начать.
-
