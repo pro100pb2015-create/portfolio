@@ -5,8 +5,8 @@
 ## Что открыть
 - Главная: `index.html`
 - Детальные проекты:
-  - `projects/project-1/index.html`
-  - `projects/project-2/index.html`
+  - `projects/one/index.html`
+  - `projects/two/index.html`
 
 ## Где менять контент
 - Имя, роль, ссылки, текст: `index.html`
@@ -15,7 +15,7 @@
 ## Картинки
 Сейчас используются плейсхолдеры:
 - `assets/me.png`
-- `assets/project-1-thumb.png`, `assets/project-1-hero.png`, и т.д.
+- `assets/project-one-thumb.jpg`, `assets/project-two-thumb.jpg`, и т.д.
 
 Создай папку `assets/` и положи туда свои изображения с теми же именами (или поменяй пути в HTML).
 
