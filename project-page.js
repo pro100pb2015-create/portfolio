@@ -119,6 +119,12 @@
     }
   };
 
+  if (window.location.protocol === "file:") {
+    closeDetailLinks.forEach((link) => {
+      link.setAttribute("href", "../../index.html");
+    });
+  }
+
   closeDetailLinks.forEach((link) => {
     link.addEventListener("pointerdown", markSkipHomeVideoIntro);
     link.addEventListener("click", markSkipHomeVideoIntro);
